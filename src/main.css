@@ -8,6 +8,9 @@
     font-weight: bold;
     font-size: 2em;
 }
+.nav-link{
+    color: pink !important;
+}
 
 .btn{
     background-color: pink;

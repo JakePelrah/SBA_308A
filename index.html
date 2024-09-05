@@ -13,56 +13,11 @@
     <link rel="stylesheet" href="src/main.css" />
   </head>
 
-
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Pet Shelter</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        </div>
+        <a href="myPets.html"><img src="./src/assets/icons/star-fill.svg" /></a>
       </div>
     </nav>
 
@@ -70,7 +25,7 @@
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <button class="btn btn-outline-secondary" type="button">
-            Button
+            <img width="25px" src="src/assets/icons/search-heart.svg" />
           </button>
         </div>
         <input
@@ -83,19 +38,24 @@
       </div>
 
       <!-- Temperament Filter -->
-      <div class="form-group mb-4">
+      <div class="form-group my-4">
         <label for="temperament">Temperament</label>
-        <select class="form-control" id="temperament">
-          <option>Friendly</option>
-          <option>Aggressive</option>
-          <option>Calm</option>
-          <option>Playful</option>
-        </select>
+        <select class="form-control" id="temperament"></select>
+      </div>
+
+      <!-- Energy Level Filter -->
+      <div class="form-group mb-4">
+        <label for="breed">Breed</label>
+        <select class="form-control" id="breed"></select>
       </div>
 
       <!-- Lifespan Filter -->
-      <div class="form-group mb-4">
-        <label for="lifespan">Lifespan (years)</label>
+      <div class="form-group mb-2">
+        <label for="lifespan"
+          >Lifespan:
+          <span>0.0</span>
+          (yrs)
+        </label>
         <input
           type="range"
           class="form-range"
@@ -104,26 +64,32 @@
           max="20"
           step="1"
         />
-        <div class="d-flex justify-content-between">
-          <span>0.0</span>
-          <span>0.0</span>
-        </div>
-      </div>
-
-      <!-- Intelligence Filter -->
-      <div class="form-group mb-4">
-        <label for="intelligence">Intelligence Level</label>
-        <select class="form-control" id="intelligence">
-          <option>Low</option>
-          <option>Average</option>
-          <option>High</option>
-          <option>Very High</option>
-        </select>
       </div>
 
       <!-- Weight Filter -->
-      <div class="form-group mb-4">
-        <label for="weight">Weight (kg)</label>
+      <div class="form-group mb-2">
+        <label for="weight"
+          >Weight:
+          <span>0.0</span>
+          (lbs)
+        </label>
+        <input
+          type="range"
+          class="form-range"
+          id="weight"
+          min="0"
+          max="300"
+          step="1"
+        />
+      </div>
+
+      <!-- Weight Filter -->
+      <div class="form-group">
+        <label for="weight"
+          >Height:
+          <span>0.0</span>
+          (in)
+        </label>
         <input
           type="range"
           class="form-range"
@@ -133,38 +99,12 @@
           step="1"
         />
         <div class="d-flex justify-content-between">
-          <span>0.0</span>
-          <span>0.0</span>
-        </div>
-      </div>
-
-      <!-- Energy Level Filter -->
-      <div class="form-group mb-4">
-        <label for="energy">Energy Level</label>
-        <select class="form-control" id="energy">
-          <option>Low</option>
-          <option>Moderate</option>
-          <option>High</option>
-        </select>
-      </div>
-
-      <!-- Hypoallergenic Filter -->
-      <div class="form-group d-flex">
-        <div class="form-check-reverse">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-          />
-          <label class="form-check-label" for="flexCheckDefault">
-            Hypoallergenic
-          </label>
+          <!-- <span>0.0</span> -->
         </div>
       </div>
     </div>
 
-    <template id="template-card">
+    <!-- <template id="template-card">
       <div class="card" style="width: 18rem">
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
@@ -176,7 +116,7 @@
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-    </template>
+    </template> -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -184,6 +124,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="src/index.js"></script>
+    <script type="module" src="src/data.js"></script>
+    <script type="module" src="src/index.js"></script>
   </body>
 </html>
