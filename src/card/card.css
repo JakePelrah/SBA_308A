@@ -1,0 +1,34 @@
+
+.adopt-btn {
+    background-color: pink;
+    border: solid 0.2em rgb(0, 0, 0);
+    font-weight: bold;
+    color: black;
+    border-radius: 1.025em;
+  }
+  
+  .adopt-btn:hover {
+    transform: scale(1.1);
+    background-color: pink;
+    border: solid 0.2em rgb(0, 0, 0);
+    transform: scale(1.1); /* Example scaling animation */
+    transition: transform 0.3s ease;
+  }
+
+
+
+#card-group {
+    margin-left: 250px;
+    margin-right: 20px;
+  }
+  
+  .card {
+    outline: none !important;
+    border: none;
+    border-radius: 1em;
+    background: #efefef;
+    box-shadow: 2px 2px 4px #cbcbcb, -2px -2px 4px #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 18rem;
+  }

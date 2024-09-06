@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #333 !important;
+  color: pink !important;
+  z-index: 9000;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+}
+
+.navbar-brand {
+  color: pink;
+  font-weight: bold;
+  font-size: 2em;
+}
+.nav-link {
+  color: pink !important;
+}
+
+.nav-icon {
+  filter: invert(69%) sepia(69%) saturate(304%) hue-rotate(307deg)
+    brightness(106%) contrast(122%);
+}
