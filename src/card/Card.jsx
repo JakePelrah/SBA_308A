@@ -1,23 +1,38 @@
-import 'card.css'
+import "./card.css";
 
-function Card() {
+function Card({ name, imgUrl, temperament }) {
+  
+  const temperamentTags = temperament
+    ?.split(",")
+    ?.map((tag) => <span className="badge">{tag}</span>);
+
   return (
     <div className="col">
       <div className="card">
-        <img src="..." className="card-img-top" alt="..." />
+        <img src={imgUrl} className="card-img-top" alt={`${name}.`} />
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="/" className="btn adopt-btn">
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text"></p>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://en.wikipedia.org/wiki/${name}`}
+            className="btn adopt-btn"
+          >
             WIKI
           </a>
-          <a href="/" className="btn adopt-btn">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="/"
+            className="btn adopt-btn"
+          >
             Adopt
           </a>
         </div>
+        {temperamentTags ? (
+          <div class="card-footer">{temperamentTags}</div>
+        ) : null}
       </div>
     </div>
   );

@@ -1,7 +1,59 @@
 import "./sidebar.css";
 import searchIcon from "../assets/icons/search-heart.svg";
+import noUiSlider from "nouislider";
+import "nouislider/dist/nouislider.css";
+import { useEffect } from "react";
 
-function Sidebar() {
+function Sidebar({
+  setSearchTerm,
+  setLifeSpan,
+  lifeSpan,
+  setWeight,
+  weight,
+  setHeight,
+  height,
+}) {
+  useEffect(() => {
+    const lifeSpan = document.getElementById("lifespan");
+    const lifeSlider = noUiSlider.create(lifeSpan, {
+      start: [4, 20],
+      tooltips:true,
+      connect: true,
+      range: {
+        min: 0,
+        max: 30,
+      },
+    });
+
+    const weight = document.getElementById("weight");
+    const weightSlider = noUiSlider.create(weight, {
+      start: [4, 20],
+      tooltips:true,
+      connect: true,
+      range: {
+        min: 0,
+        max: 30,
+      },
+    });
+
+    const height = document.getElementById("height");
+    const heightSlider = noUiSlider.create(height, {
+      start: [4, 20],
+      tooltips:true,
+      connect: true,
+      range: {
+        min: 0,
+        max: 30,
+      },
+    });
+
+    return () => {
+      lifeSlider.destroy();
+      weightSlider.destroy();
+      heightSlider.destroy();
+    };
+  }, []);
+
   return (
     <div className="sidebar">
       <div className="input-group mb-3">
@@ -17,65 +69,29 @@ function Sidebar() {
           placeholder=""
           aria-label=""
           aria-describedby="basic-addon1"
+          // onInput={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-      <div className="form-group my-4">
-        <label for="temperament">Temperament</label>
-        <select className="form-control" id="temperament"></select>
-      </div>
-
-      <div className="form-group mb-4">
-        <label for="breed">Breed</label>
-        <select className="form-control" id="breed"></select>
-      </div>
-
-      <div className="form-group mb-2">
+      <div className="form-group my-5">
         <label for="lifespan">
-          Lifespan
-          <span>0.0</span>
-          (yrs)
+          Lifespan (yrs)
         </label>
-        <input
-          type="range"
-          className="form-range"
-          id="lifespan"
-          min="0"
-          max="20"
-          step="1"
-        />
+        <div className="slider-fit" id="lifespan" />
       </div>
 
-      <div className="form-group mb-2">
+      <div className="form-group my-5">
         <label for="weight">
-          Weight
-          <span>0.0</span>
-          (lbs)
+          Weight (lbs)
         </label>
-        <input
-          type="range"
-          className="form-range"
-          id="weight"
-          min="0"
-          max="300"
-          step="1"
-        />
+        <div className="slider-fit" id="weight" />
       </div>
 
-      <div className="form-group">
-        <label for="weight">
-          Height
-          <span>0.0</span>
-          (in)
+      <div className="form-group my-5">
+        <label for="height">
+          Height (in)
         </label>
-        <input
-          type="range"
-          className="form-range"
-          id="weight"
-          min="0"
-          max="100"
-          step="1"
-        />
+        <div className="slider-fit" id="height" />
         <div className="d-flex justify-content-between">
           {/* <!-- <span>0.0</span> --> */}
         </div>

@@ -1,17 +1,18 @@
 
 .adopt-btn {
     background-color: pink;
-    border: solid 0.2em rgb(0, 0, 0);
+    border: solid .1em rgb(0, 0, 0);
     font-weight: bold;
     color: black;
     border-radius: 1.025em;
+    margin: .1em;
   }
   
   .adopt-btn:hover {
     transform: scale(1.1);
     background-color: pink;
-    border: solid 0.2em rgb(0, 0, 0);
-    transform: scale(1.1); /* Example scaling animation */
+    border: solid 0.1em rgb(0, 0, 0);
+    transform: scale(1.05); /* Example scaling animation */
     transition: transform 0.3s ease;
   }
 
@@ -31,4 +32,11 @@
     cursor: pointer;
     transition: transform 0.3s ease;
     width: 18rem;
+  }
+
+  .badge{
+    background-color: pink;
+    border: 1px solid black;
+    color: black;
+    margin: .25em;
   }
