@@ -1,4 +1,4 @@
-import "./sidebar.css";
+import "./filter.css";
 import searchIcon from "../assets/icons/search-heart.svg";
 import noUiSlider from "nouislider";
 import "nouislider/dist/nouislider.css";
@@ -7,11 +7,8 @@ import { useEffect } from "react";
 function Sidebar({
   setSearchTerm,
   setLifeSpan,
-  lifeSpan,
   setWeight,
-  weight,
   setHeight,
-  height,
 }) {
   useEffect(() => {
     const lifeSpan = document.getElementById("lifespan");
@@ -24,6 +21,7 @@ function Sidebar({
         max: 30,
       },
     });
+    lifeSlider.on('slide',(e)=>setLifeSpan(e.map(parseFloat)))
 
     const weight = document.getElementById("weight");
     const weightSlider = noUiSlider.create(weight, {
@@ -69,7 +67,7 @@ function Sidebar({
           placeholder=""
           aria-label=""
           aria-describedby="basic-addon1"
-          // onInput={(e) => setSearchTerm(e.target.value)}
+          onInput={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
@@ -93,7 +91,6 @@ function Sidebar({
         </label>
         <div className="slider-fit" id="height" />
         <div className="d-flex justify-content-between">
-          {/* <!-- <span>0.0</span> --> */}
         </div>
       </div>
     </div>
