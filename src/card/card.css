@@ -1,42 +1,63 @@
-
 .adopt-btn {
-    background-color: pink;
-    border: solid .1em rgb(0, 0, 0);
-    font-weight: bold;
-    color: black;
-    border-radius: 1.025em;
-    margin: .1em;
-  }
-  
-  .adopt-btn:hover {
-    transform: scale(1.1);
-    background-color: pink;
-    border: solid 0.1em rgb(0, 0, 0);
-    transform: scale(1.05); /* Example scaling animation */
-    transition: transform 0.3s ease;
-  }
+  background-color: pink;
+  border: solid .1em rgb(0, 0, 0);
+  font-weight: bold;
+  color: black;
+  border-radius: 1.025em;
+  margin: .1em;
+}
+
+.adopt-btn:hover {
+  transform: scale(1.1);
+  background-color: pink;
+  border: solid 0.1em rgb(0, 0, 0);
+  transform: scale(1.05);
+  /* Example scaling animation */
+  transition: transform 0.3s ease;
+}
 
 
 
 #card-group {
-    margin-left: 250px;
-    margin-right: 20px;
-  }
-  
-  .card {
-    outline: none !important;
-    border: none;
-    border-radius: 1em;
-    background: #efefef;
-    box-shadow: 2px 2px 4px #cbcbcb, -2px -2px 4px #ffffff;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    width: 18rem;
-  }
+  margin-left: 250px;
+  margin-right: 20px;
+}
 
-  .badge{
-    background-color: pink;
-    border: 1px solid black;
-    color: black;
-    margin: .25em;
-  }
+.card-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: grey;
+}
+
+.card-img-top {
+  border-radius: 0 !important;
+  height: 12em;
+  object-fit: cover;
+}
+
+.card {
+  outline: none !important;
+  border: none;
+  border-radius: 1em;
+  background: #efefef;
+  box-shadow: 2px 2px 4px #cbcbcb, -2px -2px 4px #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 18rem;
+  height: 26em;
+}
+
+.badge {
+  background-color: pink;
+  border: 1px solid black;
+  color: black;
+  margin: .25em;
+}
