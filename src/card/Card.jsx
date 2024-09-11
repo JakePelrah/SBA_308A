@@ -1,6 +1,7 @@
 import "./card.css";
 import { useLocation } from 'react-router-dom';
 
+
 function Card({ breed, adopt }) {
   let location = useLocation();
 

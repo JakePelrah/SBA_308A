@@ -6,7 +6,7 @@ import "./filter.css";
 
 const initialState = {
   searchTerm: "",
-  lifeSpan: [0, 30],
+  lifeSpan: [0, 20],
   weight: [0, 150],
   height: [0, 30],
 }
@@ -28,7 +28,7 @@ function reducer(state, action) {
 
 function Filter({
   setFilteredData,
-  allBreeds
+  breeds
 }) {
 
   const [breedFilterParam, setBreedFilterParam] = useReducer(reducer, initialState);
@@ -36,12 +36,12 @@ function Filter({
   useEffect(() => {
     const lifeSpan = document.getElementById("lifespan");
     const lifeSlider = noUiSlider.create(lifeSpan, {
-      start: [0, 30],
+      start: [0, 20],
       tooltips: true,
       connect: true,
       range: {
         min: 0,
-        max: 30,
+        max: 20,
       },
     });
     lifeSlider.on('slide', (e) => setBreedFilterParam({ type: 'lifespan', payload: e.map(parseFloat) }))
@@ -80,8 +80,8 @@ function Filter({
 
 
   useEffect(() => {
-    findData(allBreeds)
-  }, [breedFilterParam, allBreeds])
+    findData(breeds)
+  }, [breedFilterParam, breeds])
 
   function getRange(rangeStr) {
     const data = rangeStr.split(' ')
@@ -104,7 +104,7 @@ function Filter({
 
 
   function findData() {
-    const filteredData = allBreeds?.filter(breed => isInRange(breedFilterParam.lifeSpan, getRange(breed.life_span))
+    const filteredData = breeds?.filter(breed => isInRange(breedFilterParam.lifeSpan, getRange(breed.life_span))
       && isInRange(breedFilterParam.weight, getRange(breed.weight.imperial))
       && isInRange(breedFilterParam.height, getRange(breed.height.imperial))
       && breed.name.toLowerCase().includes(breedFilterParam.searchTerm.toLowerCase())

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Filter from "./filter/Filter";
 import Card from "./card/Card";
 import { dogNames } from "./dogNames.js"
+import { useDogs } from "./DogProvider.jsx";
 
 
 const API_KEY =
@@ -10,10 +11,9 @@ const API_URL = "https://api.thedogapi.com/v1";
 const headers = { "x-api-key": API_KEY, 'Content-Type': 'application/json' };
 
 
-
 function App() {
-  const [allBreeds, setAllBreeds] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const {breeds, setBreeds} = useDogs()
 
 
   function adopt(e, breed) {
@@ -39,7 +39,7 @@ function App() {
           breed.displayName = dogNames[i];
           breed.mileage = Math.floor(Math.random() * 10 + 1)
         })
-        setAllBreeds(data)
+        setBreeds(data)
       })
       .catch((e) => console.log('could not load breeds'))
 
@@ -64,7 +64,7 @@ function App() {
   ));
 
   return [
-    <Filter allBreeds={allBreeds} setFilteredData={setFilteredData} />,
+    <Filter breeds={breeds}  setFilteredData={setFilteredData} />,
     < div
       id="card-group"
       className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4 g-4 my-2"
