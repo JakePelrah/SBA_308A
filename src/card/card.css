@@ -53,8 +53,18 @@ a:hover {
   transition: transform 0.3s ease;
   width: 18rem;
   height: 26em;
+  cursor:default;
 }
 
+.card-header{
+  transition: background-color .5s 0ms;
+  cursor: pointer;
+}
+.card-header:hover{
+  background-color: #333;
+  color: #efefef;
+
+}
 .badge {
   background-color: pink;
   border: 1px solid black;
