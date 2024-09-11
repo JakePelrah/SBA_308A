@@ -1,15 +1,14 @@
 import "./card.css";
-import wiki from "../assets/icons/wikipedia.svg"
-
+import { useLocation } from 'react-router-dom';
 
 function Card({ breed, adopt }) {
-
+  let location = useLocation();
+  console.log(location)
 
   const temperamentTags = breed.temperament
     ?.split(",")
     ?.sort((a, b) => a.length - b.length).slice(0, 4)
     ?.map((tag) => <span key={tag} className="badge">{tag}</span>)
-
 
   return (
     <div className="col my-4">
@@ -29,10 +28,9 @@ function Card({ breed, adopt }) {
           {temperamentTags ? (
             <div className="card-text">{temperamentTags}</div>
           ) : null}
-
         </div>
 
-        <div className="card-footer">
+        {location.pathname === '/adoptions' ? null : <div className="card-footer">
           <a onClick={(e) => adopt(e, breed)}
             target="_blank"
             rel="noopener noreferrer"
@@ -41,7 +39,9 @@ function Card({ breed, adopt }) {
           >
             Adopt
           </a></div>
+        }
       </div>
+
     </div>
   );
 }

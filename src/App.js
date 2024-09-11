@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "./navbar/Navbar";
 import Filter from "./filter/Filter";
 import Card from "./card/Card";
 import { dogNames } from "./dogNames.js"
@@ -15,15 +14,9 @@ const headers = { "x-api-key": API_KEY, 'Content-Type': 'application/json' };
 function App() {
   const [allBreeds, setAllBreeds] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [adopted, setAdopted] = useState([])
 
 
-  function getAdopted() {
-    fetch("https://api.thedogapi.com/v1/favourites", {
-      headers
-    }).then(res => res.json())
-      .then(setAdopted)
-  }
+
 
   function adopt(e, breed) {
     e.preventDefault()
@@ -33,9 +26,9 @@ function App() {
       headers,
       body: JSON.stringify({
         image_id: breed.reference_image_id,
-        sub_id: `{ displayName: ${breed.displayName}, id:${breed.id}}`
+        sub_id: `{displayName:${breed.displayName}, id:${breed.id}}`,
       })
-    }).then(getAdopted)
+    }).then(console.log)
       .catch((e) => console.log('could not adopt pet'))
   }
 
@@ -45,6 +38,7 @@ function App() {
       .then(data => {
         data.forEach((breed, i) => breed.displayName = dogNames[i])
         setAllBreeds(data)
+        console.log(data)
       })
       .catch((e) => console.log('could not load breeds'))
   }, []);
@@ -58,7 +52,6 @@ function App() {
   ));
 
   return [
-    <Navbar />,
     <Filter allBreeds={allBreeds} setFilteredData={setFilteredData} />,
     < div
       id="card-group"
