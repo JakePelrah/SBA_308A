@@ -73,7 +73,7 @@ function AdoptionCard({ breed, adopt }) {
     return (
         <div className="col my-4">
             <div className="card adoption-card">
-                <div className="card-header">
+                <div className="adoption-card-header card-header">
                     {displayName}
                 </div>
 
@@ -82,7 +82,7 @@ function AdoptionCard({ breed, adopt }) {
                     {temp}
                 </div>
 
-                <div className="card-footer">Adoption Fee:$300</div>
+                <div className="card-footer"><b>Adoption Fee:</b>$300</div>
             </div>
         </div>
     );

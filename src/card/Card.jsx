@@ -4,8 +4,6 @@ import { useLocation } from 'react-router-dom';
 function Card({ breed, adopt }) {
   let location = useLocation();
 
-  console.log(breed)
-
   return (
     <div className="col my-4">
       <div className="card breed-card">
