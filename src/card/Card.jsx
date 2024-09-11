@@ -1,14 +1,14 @@
 import "./card.css";
 import wiki from "../assets/icons/wikipedia.svg"
 
-function Card({ breed }) {
 
-  console.log(breed)
+function Card({ breed, adopt }) {
+
 
   const temperamentTags = breed.temperament
     ?.split(",")
     ?.sort((a, b) => a.length - b.length).slice(0, 4)
-    ?.map((tag) => <span className="badge">{tag}</span>)
+    ?.map((tag) => <span key={tag} className="badge">{tag}</span>)
 
 
   return (
@@ -26,18 +26,14 @@ function Card({ breed }) {
         <div className="card-body">
           <h5 className="card-title">{breed.displayName}</h5>
 
-          <p className="card-text">
-            {temperamentTags ? (
-
-              <div>{temperamentTags}</div>
-            ) : null}
-
-          </p>
+          {temperamentTags ? (
+            <div className="card-text">{temperamentTags}</div>
+          ) : null}
 
         </div>
 
         <div className="card-footer">
-          <a
+          <a onClick={(e) => adopt(e, breed)}
             target="_blank"
             rel="noopener noreferrer"
             href="/"

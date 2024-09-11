@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          Pet Shelter
+          Pet Adoption
         </a>
         <a href="myPets.html">
           <img

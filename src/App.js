@@ -8,14 +8,36 @@ import { dogNames } from "./dogNames.js"
 const API_KEY =
   "live_7sygHn6Aun2fDcWkQcu2kO1zltKyRVQti6i6zY9oQmhYqtxWN2xBOJ6Mqu4r0Y6S";
 const API_URL = "https://api.thedogapi.com/v1";
-const headers = { "x-api-key": API_KEY };
+const headers = { "x-api-key": API_KEY, 'Content-Type': 'application/json' };
 
 
 
 function App() {
   const [allBreeds, setAllBreeds] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [adopted, setAdopted] = useState([])
 
+
+  function getAdopted() {
+    fetch("https://api.thedogapi.com/v1/favourites", {
+      headers
+    }).then(res => res.json())
+      .then(setAdopted)
+  }
+
+  function adopt(e, breed) {
+    e.preventDefault()
+
+    fetch("https://api.thedogapi.com/v1/favourites", {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        image_id: breed.reference_image_id,
+        sub_id: `{ displayName: ${breed.displayName}, id:${breed.id}}`
+      })
+    }).then(getAdopted)
+      .catch((e) => console.log('could not adopt pet'))
+  }
 
   useEffect(() => {
     fetch(`${API_URL}/breeds`, { headers })
@@ -29,8 +51,9 @@ function App() {
 
 
   const renderedCards = filteredData?.map((breed) => (
-    <Card
+    <Card key={breed.name}
       breed={breed}
+      adopt={adopt}
     />
   ));
 

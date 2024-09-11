@@ -84,7 +84,6 @@ function Filter({
   }, [breedFilterParam, allBreeds])
 
   function getRange(rangeStr) {
-    console.log(rangeStr)
     const data = rangeStr.split(' ')
     const range = data
       .filter(item => /^\d+$/.test(item))
@@ -105,7 +104,6 @@ function Filter({
 
 
   function findData() {
-    console.log(allBreeds)
     const filteredData = allBreeds?.filter(breed => isInRange(breedFilterParam.lifeSpan, getRange(breed.life_span))
       && isInRange(breedFilterParam.weight, getRange(breed.weight.imperial))
       && isInRange(breedFilterParam.height, getRange(breed.height.imperial))
@@ -135,21 +133,21 @@ function Filter({
       </div>
 
       <div className="form-group my-5">
-        <label for="lifespan">
+        <label htmlFor="lifespan">
           Lifespan (yrs)
         </label>
         <div className="slider-fit" id="lifespan" />
       </div>
 
       <div className="form-group my-5">
-        <label for="weight">
+        <label htmlFor="weight">
           Weight (lbs)
         </label>
         <div className="slider-fit" id="weight" />
       </div>
 
       <div className="form-group my-5">
-        <label for="height">
+        <label htmlFor="height">
           Height (in)
         </label>
         <div className="slider-fit" id="height" />
