@@ -16,8 +16,6 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
 
 
-
-
   function adopt(e, breed) {
     e.preventDefault()
 
@@ -26,21 +24,35 @@ function App() {
       headers,
       body: JSON.stringify({
         image_id: breed.reference_image_id,
-        sub_id: `{displayName:${breed.displayName}, id:${breed.id}}`,
+        sub_id: `{"displayName":"${breed.displayName}", "id":${breed.id}, "temp":"${breed.temperament}"}`,
       })
     }).then(console.log)
       .catch((e) => console.log('could not adopt pet'))
   }
 
   useEffect(() => {
+
     fetch(`${API_URL}/breeds`, { headers })
       .then((res) => res.json())
       .then(data => {
-        data.forEach((breed, i) => breed.displayName = dogNames[i])
+        data.forEach((breed, i) => {
+          breed.displayName = dogNames[i];
+          breed.mileage = Math.floor(Math.random() * 10 + 1)
+        })
         setAllBreeds(data)
-        console.log(data)
       })
       .catch((e) => console.log('could not load breeds'))
+
+
+    for (let i = 0; i < 10; i++) {
+      fetch("https://api.thedogapi.com/v1/images/search?" + new URLSearchParams({ order: 'ASC', has_breeds: true, page: i, limit: 100 }), {
+        headers,
+      }).then(res => res.json())
+        // .then(data=>data.forEach(breed=>console.log(breed.breeds[0].name)))
+        .catch((e) => console.log('could not adopt pet', e))
+
+    }
+
   }, []);
 
 

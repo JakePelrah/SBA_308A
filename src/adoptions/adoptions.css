@@ -1,0 +1,12 @@
+.adoption-card {
+    height: 24em;
+    outline: none !important;
+    border: none;
+    border-radius: 1em;
+    background: #efefef;
+    box-shadow: 2px 2px 4px #cbcbcb, -2px -2px 4px #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 18rem;
+    cursor: default;
+}

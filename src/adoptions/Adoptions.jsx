@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Card from "../card/Card";
 import "./adoptions.css";
 
 const API_KEY =
@@ -35,8 +34,9 @@ function Adoptions() {
     }
 
     const renderedCards = adopted?.map((breed) => (
-        <Card key={breed.name}
+        <AdoptionCard key={breed.name}
             breed={breed}
+            temp={breed.temp}
         />
     ));
 
@@ -57,3 +57,34 @@ function Adoptions() {
 }
 
 export default Adoptions;
+
+
+
+function AdoptionCard({ breed, adopt }) {
+    let { displayName, temp } = JSON.parse(breed.sub_id)
+
+
+    temp = temp
+        ?.split(",")
+        ?.sort((a, b) => a.length - b.length).slice(0, 4)
+        ?.map((tag) => <span key={tag} className="badge">{tag}</span>)
+
+
+    return (
+        <div className="col my-4">
+            <div className="card adoption-card">
+                <div className="card-header">
+                    {displayName}
+                </div>
+
+                <img src={breed.image.url} className="card-img-top" alt={`${breed.name}.`} />
+                <div className="card-body">
+                    {temp}
+                </div>
+
+                <div className="card-footer">Adoption Fee:$300</div>
+            </div>
+        </div>
+    );
+}
+

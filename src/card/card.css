@@ -16,8 +16,6 @@
   transition: transform 0.3s ease;
 }
 
-
-
 #card-group {
   margin-left: 250px;
   margin-right: 20px;
@@ -43,7 +41,7 @@ a:hover {
   object-fit: cover;
 }
 
-.card {
+.breed-card {
   outline: none !important;
   border: none;
   border-radius: 1em;
@@ -52,15 +50,15 @@ a:hover {
   cursor: pointer;
   transition: transform 0.3s ease;
   width: 18rem;
-  height: 26em;
+  height: 23em;
   cursor:default;
 }
 
-.card-header{
+.breed-card-header{
   transition: background-color .5s 0ms;
   cursor: pointer;
 }
-.card-header:hover{
+.breed-card-header:hover{
   background-color: #333;
   color: #efefef;
 
