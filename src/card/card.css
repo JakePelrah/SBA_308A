@@ -7,6 +7,24 @@
   margin: .1em;
 }
 
+.abandon-btn {
+  background-color: rgb(237, 11, 49);
+  border: solid .1em rgb(0, 0, 0);
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-radius: 1.025em;
+  margin: .1em;
+}
+
+.abandon-btn:hover {
+  transform: scale(1.05);
+  background-color: rgb(237, 11, 49);
+  border: solid .1em rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 1.025em;
+  /* Example scaling animation */
+  transition: transform 0.3s ease;
+}
 .adopt-btn:hover {
   transform: scale(1.1);
   background-color: pink;
