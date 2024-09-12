@@ -1,13 +1,13 @@
+import { useEffect } from "react";
 import { useDogs } from "../DogProvider";
 import "./adoptions.css";
 
 function Adoptions() {
     const { adopted, refreshAdopted } = useDogs()
-    
-    refreshAdopted()
 
-    const renderedCards = adopted?.map((breed) => (
-        <AdoptionCard key={breed.name}
+    
+    const renderedCards = adopted?.map((breed, key) => (
+        <AdoptionCard key={key}
             breed={breed}
             temp={breed.temp}
         />
@@ -32,7 +32,7 @@ function AdoptionCard({ breed }) {
     temp = temp
         ?.split(",")
         ?.sort((a, b) => a.length - b.length).slice(0, 4)
-        ?.map((tag) => <span key={tag} className="badge">{tag}</span>)
+        ?.map((tag, key) => <span key={key} className="badge">{tag}</span>)
 
     return (
         <div className="col my-4">

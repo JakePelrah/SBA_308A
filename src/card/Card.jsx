@@ -1,11 +1,10 @@
 import "./card.css";
-import { useLocation } from 'react-router-dom';
+
 
 
 function Card({ breed, adopt, adopted, deleteOne }) {
 
   const result = adopted.filter(a => JSON.parse(a.sub_id).id === breed.id)
-  console.log(result)
 
   return (
     <div className="col my-4">
