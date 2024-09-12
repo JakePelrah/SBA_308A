@@ -43,12 +43,22 @@ export default function DogProvider({ children }) {
     }
 
     function refreshAdopted() {
-        fetch("https://api.thedogapi.com/v1/favourites", {
-            headers
-        }).then(res => res.json())
+
+        fetch("https://api.thedogapi.com/v1/favourites", { headers })
+            .then(res => {
+                if (res.status === 429) {
+                    console.log('Rate Limit')
+                }
+                if (!res.ok) {
+                    throw new Error('Bad Response')
+                }
+                return res.json()
+            })
             .then(setAdopted)
-            .catch("Refresh the browser")
+            .catch(() => console.log("Bad Response"))
     }
+
+
 
     function adopt(e, breed) {
         e.preventDefault()

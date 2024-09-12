@@ -9,7 +9,7 @@ function App() {
   const { breeds, adopt, adopted, deleteOne } = useDogs()
 
   const renderedCards = filteredData?.map((breed) => (
-    <Card key={breed.name}
+    <Card key={breed.id}
       breed={breed}
       adopt={adopt}
       adopted={adopted}
@@ -17,15 +17,16 @@ function App() {
     />
   ));
 
-  return [
-    <Filter breeds={breeds} setFilteredData={setFilteredData} />,
-    < div
-      id="card-group"
-      className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4 g-4 my-2"
-    >
-      {renderedCards}
-    </div >,
-  ];
+  return (
+    <>
+      <Filter breeds={breeds} setFilteredData={setFilteredData} />,
+      < div
+        id="card-group"
+        className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4 g-4 my-2"
+      >
+        {renderedCards}
+      </div >,
+    </>)
 }
 
 export default App;

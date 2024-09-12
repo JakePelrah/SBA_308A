@@ -89,7 +89,6 @@ function Filter({
       .filter(item => /^\d+$/.test(item))
       .map(Number);
     return range
-
   }
 
   function isInRange(searchRange, breedRange) {
