@@ -1,10 +1,10 @@
 import { useDogs } from "../DogProvider";
 import "./adoptions.css";
 
-
 function Adoptions() {
-    const { adopted } = useDogs()
-
+    const { adopted, refreshAdopted } = useDogs()
+    
+    refreshAdopted()
 
     const renderedCards = adopted?.map((breed) => (
         <AdoptionCard key={breed.name}
@@ -14,17 +14,16 @@ function Adoptions() {
     ));
 
     return (
-        <div
-            className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 mx-4 my-2"
-        >
-            {renderedCards}
+        <div className="row row-cols-1 
+        row-cols-sm-2 
+        row-cols-lg-3 
+        row-cols-xl-4 
+        g-4 mx-4 my-2">{renderedCards}
         </div >
-
     );
 }
 
 export default Adoptions;
-
 
 
 function AdoptionCard({ breed }) {
@@ -35,14 +34,12 @@ function AdoptionCard({ breed }) {
         ?.sort((a, b) => a.length - b.length).slice(0, 4)
         ?.map((tag) => <span key={tag} className="badge">{tag}</span>)
 
-
     return (
         <div className="col my-4">
             <div className="card adoption-card">
                 <div className="adoption-card-header card-header">
                     {displayName}
                 </div>
-
                 <img src={breed.image.url} className="card-img-top" alt={`${breed.name}.`} />
                 <div className="card-body">
                     {temp}

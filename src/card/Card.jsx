@@ -2,8 +2,10 @@ import "./card.css";
 import { useLocation } from 'react-router-dom';
 
 
-function Card({ breed, adopt }) {
-  let location = useLocation();
+function Card({ breed, adopt, adopted, deleteOne }) {
+
+  const result = adopted.filter(a => JSON.parse(a.sub_id).id === breed.id)
+  console.log(result)
 
   return (
     <div className="col my-4">
@@ -17,20 +19,31 @@ function Card({ breed, adopt }) {
 
         </div>
 
-        {location.pathname === '/adoptions' ? null : <div className="card-footer">
-          <a onClick={(e) => adopt(e, breed)}
-            target="_blank"
-            rel="noopener noreferrer"
-            href="/"
-            className="btn adopt-btn"
-          >
-            Adopt
-          </a>
-         <span className="ps-4">{breed.mileage} miles away</span>
-          </div>
-        }
-      </div>
 
+        <div className="card-footer">
+          {result.length > 0 ?
+
+            <a onClick={(e) => { e.preventDefault(); deleteOne(result[0].id) }}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="/"
+              className="btn abandon-btn"
+            >
+              Abandon
+            </a> :
+            <a onClick={(e) => adopt(e, breed)}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="/"
+              className="btn adopt-btn"
+            >
+              Adopt
+            </a>
+          }
+          <span className="ps-4">{breed.mileage} miles away</span>
+        </div>
+
+      </div>
     </div>
   );
 }

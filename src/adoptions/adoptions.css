@@ -5,15 +5,9 @@
     border-radius: 1em;
     background: #efefef;
     box-shadow: 2px 2px 4px #cbcbcb, -2px -2px 4px #ffffff;
-    cursor: pointer;
-    transition: transform 0.3s ease;
     width: 18rem;
-    cursor: default;
 }
-
 .adoption-card-header{
-    transition: background-color .5s 0ms;
-    cursor: pointer;
     border-radius: 1em 1em 0 0 !important;
   }
   
